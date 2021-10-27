@@ -5,8 +5,9 @@ ex: `0.5.24`
 
 ## Usage
 
-Download all the .sh of this repository.
-Add an action as this one :
+Download all the .sh of this repository & add it to your repository.
+Name all your branch as x.y
+Add an action as this one to use version variable:
 
 ```yml
 # .github/workflows/version.yml
