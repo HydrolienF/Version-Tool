@@ -22,6 +22,8 @@ runs:
     shell: bash
     run: |
       echo "-------------"
+      ls
+      echo "-------------"
       git fetch
       echo "-------------"
       lastBranch=$(./getLastGitBranch.sh)
@@ -35,5 +37,7 @@ runs:
     shell: bash
     run: |
       version=$(./updateVersion.sh)
+      echo "-------------"
       echo $version
+      echo "-------------"
       echo "::set-output name=version::$version"
