@@ -6,14 +6,17 @@ branding:
   color: 'orange'
 
 runs:
-  runs-on: ubuntu-latest
+  using: "composite"
   steps:
-  - name: checkout
-    uses: actions/checkout@v2
-  - name: chmod
+  # - name: checkout
+  #   uses: actions/checkout@v2
+  - id: chmod
+    shell: bash
     run: |
       chmod 700 *.sh
-  - name: ini git
+
+  - id: ini git
+    shell: bash
     run: |
       echo "-------------"
       git fetch
@@ -23,9 +26,12 @@ runs:
       echo "-------------"
       git switch $lastBranch
       echo "-------------"
-  - name: updateVersion.sh
+
+  - id: updateVersion.sh
+    shell: bash
     run: ./updateVersion.sh
-  - name: commit version.md
+  - id: commit version.md
+    shell: bash
     run: |
       if [[ `git status --untracked-files=no --porcelain docs/` != "\n" ]]; then
         git config --local user.email "action@github.com"
