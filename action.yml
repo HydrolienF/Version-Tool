@@ -35,4 +35,5 @@ runs:
     shell: bash
     run: |
       version=$(./updateVersion.sh)
+      echo $version
       echo "::set-output name=version::$version"
