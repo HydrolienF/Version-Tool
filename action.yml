@@ -10,12 +10,12 @@ runs:
   steps:
   # - name: checkout
   #   uses: actions/checkout@v2
-  - id: chmod
+  - name: chmod
     shell: bash
     run: |
       chmod 700 *.sh
 
-  - id: ini git
+  - name: ini git
     shell: bash
     run: |
       echo "-------------"
@@ -27,10 +27,10 @@ runs:
       git switch $lastBranch
       echo "-------------"
 
-  - id: updateVersion.sh
+  - name: updateVersion.sh
     shell: bash
     run: ./updateVersion.sh
-  - id: commit version.md
+  - name: commit version.md
     shell: bash
     run: |
       if [[ `git status --untracked-files=no --porcelain docs/` != "\n" ]]; then
