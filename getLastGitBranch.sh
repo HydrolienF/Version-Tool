@@ -4,6 +4,6 @@ sol=""
 while [[ ! -z $s ]]; do
   sol=$s
   s=$(git branch -r --format="%(refname)" | grep -F $i'.' | awk '{ print length, $0 }' | sort -n -s | cut -d" " -f2- | tail -q -n 1 | tail -c +21)
-  i+=1
+  i=$((i+1))
 done
 echo $sol
