@@ -5,7 +5,8 @@ ex: `0.5.24`
 
 ## Usage
 
-A simple action to get current version in a version.md file.
+Download all the .sh of this repository.
+Add an action as this one :
 
 ```yml
 # .github/workflows/version.yml
@@ -21,8 +22,11 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v2
+      
     - name: Version-Tool
-      uses: HydrolienF/Version-Tool@0.4.6
+      uses: HydrolienF/Version-Tool@0.5.5
+      id: version
+      
     - name: print
-      run: cat version.md
+      run: echo ${{ steps.version.outputs.version }}
 ```
