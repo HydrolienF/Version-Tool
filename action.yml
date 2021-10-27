@@ -5,15 +5,11 @@ branding:
   icon: 'chevron-up'
   color: 'orange'
 
+outputs:
+
 runs:
   using: "composite"
   steps:
-  # - name: checkout
-  #   uses: actions/checkout@v2
-  - name: chmod
-    shell: bash
-    run: |
-      chmod 700 *.sh
 
   - name: ini git
     shell: bash
@@ -29,14 +25,6 @@ runs:
 
   - name: updateVersion.sh
     shell: bash
-    run: ./updateVersion.sh
-  - name: commit version.md
-    shell: bash
     run: |
-      if [[ `git status --untracked-files=no --porcelain docs/` != "\n" ]]; then
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add version.md
-        git commit -m "Auto version.md update"
-        git push
-      fi
+      version=$(./updateVersion.sh)
+      echo "::set-output name=version::$version"
