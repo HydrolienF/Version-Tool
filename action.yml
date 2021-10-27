@@ -1,4 +1,6 @@
 name: Version-Tool
+author: "HydrolienF"
+description: 'Versioning based on branch name and commit count of your repository.'
 
 on:
   pull_request:
