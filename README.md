@@ -8,6 +8,7 @@ ex: `0.5.24`
 A simple action to get current version in a version.md file.
 
 ```yml
+# .github/workflows/version.yml
 name: updateVersion
 
 on:
