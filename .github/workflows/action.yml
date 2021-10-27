@@ -1,4 +1,4 @@
-name: updateVersion
+name: Version-Tool
 
 on:
   pull_request:
