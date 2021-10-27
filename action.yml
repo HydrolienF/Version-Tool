@@ -6,6 +6,9 @@ branding:
   color: 'orange'
 
 outputs:
+  version:
+    description: "version string"
+    value: ${{ steps.version.outputs.version }}
 
 runs:
   using: "composite"
@@ -24,6 +27,7 @@ runs:
       echo "-------------"
 
   - name: updateVersion.sh
+    id: version
     shell: bash
     run: |
       version=$(./updateVersion.sh)
