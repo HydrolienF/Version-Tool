@@ -29,8 +29,8 @@ runs:
       lastBranch=$(./getLastGitBranch.sh)
       echo $lastBranch | cat -v
       echo "-------------"
-      git restore *
-      git switch $lastBranch
+      git switch $lastBranch -f
+      git pull
       echo "-------------"
 
   - name: updateVersion.sh
