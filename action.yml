@@ -24,6 +24,10 @@ runs:
       echo "-------------"
       ls
       echo "-------------"
+      # TODO download *.sh from Version-Tool repository
+      echo "-------------"
+      ls
+      echo "-------------"
       git fetch
       echo "-------------"
       lastBranch=$(./getLastGitBranch.sh)
@@ -31,8 +35,6 @@ runs:
       echo "-------------"
       git switch $lastBranch -f
       git pull
-      echo "-------------"
-
       echo "-------------"
 
   - name: updateVersion.sh
