@@ -15,6 +15,7 @@ runs:
   steps:
 
   - name: download Version-Tool
+    shell: bash
     run: |
       vtversion="0.6.2"
       wget https://github.com/HydrolienF/Version-Tool/archive/refs/tags/$vtversion.zip
