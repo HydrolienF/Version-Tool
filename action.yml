@@ -1,4 +1,4 @@
-name: Version-Tool
+name: VersionTool
 author: "HydrolienF"
 description: 'Versioning based on branch name and commit count of your repository.'
 branding:
@@ -13,6 +13,10 @@ outputs:
 runs:
   using: "composite"
   steps:
+
+  # - name: chmod
+  #   shell: bash
+  #   run: echo "test"
 
   - name: chmod
     shell: bash
@@ -47,6 +51,7 @@ runs:
       echo "-------------"
       echo "::set-output name=version::$version"
 
-    - name: clean git
-      run: |
-        git switch master
+  - name: clean git
+    shell: bash
+    run: |
+      git switch master
