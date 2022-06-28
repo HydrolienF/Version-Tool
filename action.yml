@@ -14,9 +14,12 @@ runs:
   using: "composite"
   steps:
 
-  # - name: chmod
-  #   shell: bash
-  #   run: echo "test"
+  - name: download Version-Tool
+    run: |
+      vtversion="0.6.2"
+      wget https://github.com/HydrolienF/Version-Tool/archive/refs/tags/$vtversion.zip
+      unzip $vtversion.zip
+      mv Version-Tool-$vtversion/*.sh .
 
   - name: chmod
     shell: bash
