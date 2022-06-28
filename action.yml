@@ -46,7 +46,7 @@ runs:
       echo "-------------"
       echo "::set-output name=version::$version"
 
-    - name: clean git
-      shell: bash
-      run: |
-        git switch master
+  - name: clean git
+    shell: bash
+    run: |
+      git switch master
