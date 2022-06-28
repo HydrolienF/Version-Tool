@@ -22,6 +22,16 @@ runs:
     shell: bash
     run: chmod 700 *.sh
 
+  - name: updateVersion.sh
+    id: startBranchName
+    shell: bash
+    run: |
+      startBranchName=$(git rev-parse --abbrev-ref HEAD)
+      echo "-------------"
+      echo $startBranchName
+      echo "-------------"
+      echo "::set-output name=startBranchName::$startBranchName"
+
   - name: ini git
     shell: bash
     run: |
@@ -51,7 +61,7 @@ runs:
       echo "-------------"
       echo "::set-output name=version::$version"
 
-  - name: clean git
+  - name: clean git ref
     shell: bash
     run: |
-      git switch master
+      git switch ${{ steps.startBranchName.outputs.startBranchName }}
