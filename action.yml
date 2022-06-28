@@ -14,44 +14,44 @@ runs:
   using: "composite"
   steps:
 
-  - name: chmod
-    shell: bash
-    run: echo "test"
-
   # - name: chmod
   #   shell: bash
-  #   run: chmod 700 *.sh
-  #
-  # - name: ini git
-  #   shell: bash
-  #   run: |
-  #     echo "-------------"
-  #     ls
-  #     echo "-------------"
-  #     # TODO download *.sh from Version-Tool repository
-  #     echo "-------------"
-  #     ls
-  #     echo "-------------"
-  #     git fetch
-  #     echo "-------------"
-  #     lastBranch=$(./getLastGitBranch.sh)
-  #     echo $lastBranch | cat -v
-  #     echo "-------------"
-  #     git switch $lastBranch -f
-  #     git pull
-  #     echo "-------------"
-  #
-  # - name: updateVersion.sh
-  #   id: version
-  #   shell: bash
-  #   run: |
-  #     version=$(./updateVersion.sh)
-  #     echo "-------------"
-  #     echo $version
-  #     echo "-------------"
-  #     echo "::set-output name=version::$version"
-  #
-  # - name: clean git
-  #   shell: bash
-  #   run: |
-  #     git switch master
+  #   run: echo "test"
+
+  - name: chmod
+    shell: bash
+    run: chmod 700 *.sh
+
+  - name: ini git
+    shell: bash
+    run: |
+      echo "-------------"
+      ls
+      echo "-------------"
+      # TODO download *.sh from Version-Tool repository
+      echo "-------------"
+      ls
+      echo "-------------"
+      git fetch
+      echo "-------------"
+      lastBranch=$(./getLastGitBranch.sh)
+      echo $lastBranch | cat -v
+      echo "-------------"
+      git switch $lastBranch -f
+      git pull
+      echo "-------------"
+
+  - name: updateVersion.sh
+    id: version
+    shell: bash
+    run: |
+      version=$(./updateVersion.sh)
+      echo "-------------"
+      echo $version
+      echo "-------------"
+      echo "::set-output name=version::$version"
+
+  - name: clean git
+    shell: bash
+    run: |
+      git switch master
