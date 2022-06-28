@@ -1,4 +1,4 @@
-name: Version-Tool
+name: VersionTool
 author: "HydrolienF"
 description: 'Versioning based on branch name and commit count of your repository.'
 branding:
@@ -16,37 +16,42 @@ runs:
 
   - name: chmod
     shell: bash
-    run: chmod 700 *.sh
+    run: echo "test"
 
-  - name: ini git
-    shell: bash
-    run: |
-      echo "-------------"
-      ls
-      echo "-------------"
-      echo "-------------"
-      ls
-      echo "-------------"
-      git fetch
-      echo "-------------"
-      lastBranch=$(./getLastGitBranch.sh)
-      echo $lastBranch | cat -v
-      echo "-------------"
-      git switch $lastBranch -f
-      git pull
-      echo "-------------"
-
-  - name: updateVersion.sh
-    id: version
-    shell: bash
-    run: |
-      version=$(./updateVersion.sh)
-      echo "-------------"
-      echo $version
-      echo "-------------"
-      echo "::set-output name=version::$version"
-
-  - name: clean git
-    shell: bash
-    run: |
-      git switch master
+  # - name: chmod
+  #   shell: bash
+  #   run: chmod 700 *.sh
+  #
+  # - name: ini git
+  #   shell: bash
+  #   run: |
+  #     echo "-------------"
+  #     ls
+  #     echo "-------------"
+  #     # TODO download *.sh from Version-Tool repository
+  #     echo "-------------"
+  #     ls
+  #     echo "-------------"
+  #     git fetch
+  #     echo "-------------"
+  #     lastBranch=$(./getLastGitBranch.sh)
+  #     echo $lastBranch | cat -v
+  #     echo "-------------"
+  #     git switch $lastBranch -f
+  #     git pull
+  #     echo "-------------"
+  #
+  # - name: updateVersion.sh
+  #   id: version
+  #   shell: bash
+  #   run: |
+  #     version=$(./updateVersion.sh)
+  #     echo "-------------"
+  #     echo $version
+  #     echo "-------------"
+  #     echo "::set-output name=version::$version"
+  #
+  # - name: clean git
+  #   shell: bash
+  #   run: |
+  #     git switch master
