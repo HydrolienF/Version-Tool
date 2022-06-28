@@ -24,7 +24,6 @@ runs:
       echo "-------------"
       ls
       echo "-------------"
-      # TODO download *.sh from Version-Tool repository
       echo "-------------"
       ls
       echo "-------------"
