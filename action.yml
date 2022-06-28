@@ -33,6 +33,8 @@ runs:
       git pull
       echo "-------------"
 
+      echo "-------------"
+
   - name: updateVersion.sh
     id: version
     shell: bash
@@ -42,3 +44,7 @@ runs:
       echo $version
       echo "-------------"
       echo "::set-output name=version::$version"
+
+    - name: clean git
+      run: |
+        git switch master
