@@ -1,4 +1,4 @@
-curentBranchCommit=$(./countCommitFromLastBranch.sh)
+curentBranchCommit=$($PATH_TO_SH/countCommitFromLastBranch.sh)
 # branchVersion=$(git symbolic-ref HEAD --short)
-branchVersion=$(./getLastGitBranch.sh)
+branchVersion=$($PATH_TO_SH/getLastGitBranch.sh)
 echo $branchVersion'.'$curentBranchCommit

@@ -18,6 +18,7 @@ runs:
     id: startBranchName
     shell: bash
     run: |
+      export PATH_TO_SH=${{ github.action_path }}
       startBranchName=$(git rev-parse --abbrev-ref HEAD)
       echo "-------------"
       echo $startBranchName
@@ -27,12 +28,13 @@ runs:
   - name: ini git
     shell: bash
     run: |
+      export PATH_TO_SH=${{ github.action_path }}
       echo "-------------"
       ls
       echo "-------------"
       git fetch
       echo "-------------"
-      lastBranch=$(${{ github.action_path }}/getLastGitBranch.sh)
+      lastBranch=$($PATH_TO_SH/getLastGitBranch.sh)
       echo $lastBranch | cat -v
       echo "-------------"
       git switch $lastBranch -f
@@ -43,7 +45,8 @@ runs:
     id: version
     shell: bash
     run: |
-      version=$(${{ github.action_path }}/updateVersion.sh)
+      export PATH_TO_SH=${{ github.action_path }}
+      version=$($PATH_TO_SH/updateVersion.sh)
       echo "-------------"
       echo $version
       echo "-------------"

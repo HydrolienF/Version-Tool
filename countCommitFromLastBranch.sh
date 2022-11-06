@@ -1,6 +1,6 @@
 # branchVersion=$(git symbolic-ref HEAD --short)
 # | head -c -2 remove the weard special char at the end of lastBranch.
-branchVersion=$(./getLastGitBranch.sh)
+branchVersion=$($PATH_TO_SH/getLastGitBranch.sh)
 branchLastVersion=""
 k=true;
 for i in `echo $branchVersion | tr "." " "`; do
@@ -11,7 +11,7 @@ for i in `echo $branchVersion | tr "." " "`; do
     if [[ $i>0 ]]; then
       branchLastVersion=$branchLastVersion"."$(($i-1))
     else
-      branchLastVersion=$(./getLastGitBranchI.sh $(($branchLastVersion-1)))
+      branchLastVersion=$($PATH_TO_SH/getLastGitBranchI.sh $(($branchLastVersion-1)))
 
     fi
   fi
