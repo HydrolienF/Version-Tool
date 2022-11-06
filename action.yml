@@ -14,19 +14,7 @@ runs:
   using: "composite"
   steps:
 
-  - name: download Version-Tool
-    shell: bash
-    run: |
-      vtversion="0.6.2"
-      wget https://github.com/HydrolienF/Version-Tool/archive/refs/tags/$vtversion.zip
-      unzip $vtversion.zip
-      mv Version-Tool-$vtversion/*.sh .
-
-  - name: chmod
-    shell: bash
-    run: chmod 700 *.sh
-
-  - name: updateVersion.sh
+  - name: updateVersion
     id: startBranchName
     shell: bash
     run: |
@@ -34,7 +22,7 @@ runs:
       echo "-------------"
       echo $startBranchName
       echo "-------------"
-      echo "::set-output name=startBranchName::$startBranchName"
+      echo "startBranchName=$startBranchName" >> $GITHUB_OUTPUT
 
   - name: ini git
     shell: bash
@@ -42,13 +30,9 @@ runs:
       echo "-------------"
       ls
       echo "-------------"
-      # TODO download *.sh from Version-Tool repository
-      echo "-------------"
-      ls
-      echo "-------------"
       git fetch
       echo "-------------"
-      lastBranch=$(./getLastGitBranch.sh)
+      lastBranch=$(${{ github.action_path }}/getLastGitBranch.sh)
       echo $lastBranch | cat -v
       echo "-------------"
       git switch $lastBranch -f
@@ -59,11 +43,11 @@ runs:
     id: version
     shell: bash
     run: |
-      version=$(./updateVersion.sh)
+      version=$(${{ github.action_path }}/updateVersion.sh)
       echo "-------------"
       echo $version
       echo "-------------"
-      echo "::set-output name=version::$version"
+      echo "version=$version" >> $GITHUB_OUTPUT
 
   - name: clean git ref
     shell: bash
